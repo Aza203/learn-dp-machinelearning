@@ -32,7 +32,7 @@ if page == "Input Data":
         'Nama Instansi': instance_name,
         'Jumlah Uang': money_amount
       })
-      st.sucess('Data Berhasil disimpan!')
+      st.success('Data Berhasil disimpan!')
     else:
       st.error('Mohon isi semua kolom!')
       
