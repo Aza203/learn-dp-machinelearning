@@ -10,7 +10,7 @@ st.write('this is app for learn machine learning')
 
 
 st.sidebar.title('Navigasi')
-page = st.sidebar.button("Pilih Halaman",["Input Data", "List Data", "Grafik", "Forecasting"])
+page = st.sidebar.radio("Pilih Halaman",["Input Data", "List Data", "Grafik", "Forecasting"])
 
 if page == "Input Data":
   st.title("Dashboard Input Data")
