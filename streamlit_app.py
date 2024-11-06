@@ -9,8 +9,8 @@ st.title('Machine Learning Apps')
 st.write('this is app for learn machine learning')
 
 
-page = ["Input Data", "List Data", "Grafik", "Forecasting"]
-st.navigation(page,position = "sidebar", expanded = False)
+st.sidebar.title('Navigasi')
+page = st.sidebar.button("Pilih Halaman",["Input Data", "List Data", "Grafik", "Forecasting"])
 
 if page == "Input Data":
   st.title("Dashboard Input Data")
