@@ -44,10 +44,13 @@ elif page == 'List Data':
   st.title('List Data')
   if st.session_state['data']:
     df = pd.DataFrame(st.session_state['data'])
-    df['Tanggal'] = pd.to_datetime(df['Tanggal']) 
-    grouped = df.groupby([df['Tanggal'].dt.year, df['Tanggal'].dt.month, df['Tanggal'].dt.day])
-    for (year, month,day), group in grouped:
-      st.write(f"Data untuk {year}-{month:02d}-{day:02d}")
-      st.table(df)
+    if 'Tanggal' in df.columns:
+      df['Tanggal'] = pd.to_datetime(df['Tanggal']) 
+      grouped = df.groupby([df['Tanggal'].dt.year, df['Tanggal'].dt.month, df['Tanggal'].dt.day])
+      for (year, month,day), group in grouped:
+        st.write(f"Data untuk {year}-{month:02d}-{day:02d}")
+        st.table(group)
+    else:
+      st.write("Kolom 'Tanggal' tidak ditemukan dalam data.")
   else:
-    st.write("Belum ada data yang disimpan")
+    st.write("Belum ada data yang disimpan.")
