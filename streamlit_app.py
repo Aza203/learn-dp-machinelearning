@@ -30,11 +30,11 @@ if page == "Input Data":
     if driver_name and instance_name and money_amount:
       current_time = datetime.now()
       st.session_state['data'].append({
+        'Tanggal': current_time.strftime("%Y-%m-%d"),
+        'Waktu': current_time.strftime("%H:%M:%S"),
         'Nama Driver' : driver_name,
         'Nama Instansi': instance_name,
         'Jumlah Uang': money_amount,
-        'Tanggal': current_time.strftime("%Y-%m-%d"),
-        'Waktu': current_time.strftime("%H:%M:%S")
       })
       st.success('Data Berhasil disimpan!')
     else:
