@@ -12,7 +12,7 @@ st.sidebar.title('Navigasi')
 page = st.sidebar.button("Pilih Halaman",["Input Data", "List Data", "Grafik", "Forecasting"])
 
 if page == "Input Data":
-  st.title('Dashboard Input Data")
+  st.title("Dashboard Input Data")
   col_data_driver, col_data_uang = st.columns(2)
 
   with col_data_driver:
