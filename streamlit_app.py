@@ -48,6 +48,6 @@ elif page == 'List Data':
     grouped = df.groupby([df['Tanggal'].dt.year, df['Tanggal'].dt.month, df['Tanggal'].dt.day])
     for (year, month,day), group in grouped:
       st.write(f"Data untuk {year}-{month:02d}-{day:02d}")
-      st.table(group)
+      st.table(df)
   else:
     st.write("Belum ada data yang disimpan")
