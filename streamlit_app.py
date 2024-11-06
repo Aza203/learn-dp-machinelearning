@@ -45,7 +45,7 @@ elif page == 'List Data':
   if st.session_state['data']:
     df = pd.DataFrame(st.session_state['data'])
     if 'Tanggal' in df.columns:
-      df['Tanggal'] = pd.to_datetime(df['Tanggal'].dt.strftime('%Y-%m-%d')) 
+      df['Tanggal'] = pd.to_datetime(df['Tanggal']).dt.strftime('%Y-%m-%d')
       grouped = df.groupby([df['Tanggal']])
       for date, group in grouped:
         st.write(f"Data untuk {date}")
