@@ -38,7 +38,7 @@ if page == "Input Data":
 elif page == 'List Data':
   st.title('List Data')
   if st.session_state['data']:
-    df = pd.DataFrame(st.session_state['data']}
+    df = pd.DataFrame(st.session_state['data'])
     st.table(df)
   else:
     st.write("Belum ada data yang disimpan")
