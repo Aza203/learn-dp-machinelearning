@@ -46,10 +46,16 @@ elif page == 'List Data':
     df = pd.DataFrame(st.session_state['data'])
     if 'Tanggal' in df.columns:
       df['Tanggal'] = pd.to_datetime(df['Tanggal']).dt.strftime('%Y-%m-%d')
-      grouped = df.groupby([df['Tanggal']])
-      for date, group in grouped:
-        st.write(f"Data untuk {date}")
-        st.table(group)
+      df['Tahun'] = pd.to_datetime(df['Tanggal']).dt.year
+      df['bulan'] = pd.to_datetime(df['Tanggal']).dt.month_name
+
+      grouped_year = df.groupby([df['Tahun']])
+      for year, group_year in grouped_year:
+        st.write(f"Data untuk Tahun {year}")
+        grouped_mounth = group_year.groupby('Bulan')
+        for month, group_month in grouped_mounth:
+          with st.expander(f"{month}"):
+            st.table(group_month.drop(columns=['Tahun', 'Bulan']))
     else:
       st.write("Kolom 'Tanggal' tidak ditemukan dalam data.")
   else:
