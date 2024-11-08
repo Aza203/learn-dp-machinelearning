@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import numpy as np
 from datetime import datetime
 import pytz
 
@@ -38,26 +37,28 @@ else:
 
         with col_data_barang:
             st.header("Data Barang")
-            item_name = st.text_input('Nama Barang')
+            item_name = st.selectbox('Nama Barang', ['Gelas', 'Botol'])
             item_code = st.text_input('Kode Barang')
 
         with col_data_stok:
             st.header("Data Stok")
             initial_stock = st.number_input('Stok Awal', min_value=0)
-            current_stock = st.number_input('Stok Saat Ini', min_value=0)
+            additional_stock = st.number_input('Stok Tambahan', min_value=0)
 
         if st.button('Simpan Data'):
-            if item_name and item_code and initial_stock is not None and current_stock is not None:
+            if item_name and item_code and initial_stock is not None and additional_stock is not None:
                 tz = pytz.timezone('Asia/Jakarta')
                 current_time = datetime.now(tz)
+                total_stock = initial_stock + additional_stock
                 st.session_state['data'].append({
                     'Tanggal': current_time.strftime("%Y-%m-%d"),
                     'Waktu': current_time.strftime("%H:%M:%S"),
                     'Nama Barang': item_name,
                     'Kode Barang': item_code,
                     'Stok Awal': initial_stock,
-                    'Stok Saat Ini': current_stock,
-                    'Selisih': current_stock - initial_stock
+                    'Stok Tambahan': additional_stock,
+                    'Stok Total': total_stock,
+                    'Selisih': total_stock - initial_stock
                 })
                 st.success('Data Berhasil disimpan!')
             else:
