@@ -26,8 +26,11 @@ if st.button('Submit'):
         'Nilai Tambah': nilai_tambah
     })
 
-# Tampilkan hasil
-st.write('Hasil penambahan:', st.session_state.angka)
+# Buat kolom untuk hasil penambahan
+col1, col2 = st.beta_columns([3, 1])
+
+with col1:
+    st.write('Hasil penambahan:', st.session_state.angka)
 
 # Tampilkan tabel detail
 if st.session_state.data:
