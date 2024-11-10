@@ -3,21 +3,6 @@ import pandas as pd
 from datetime import datetime
 import pytz
 
-# Fungsi untuk login
-def login(username, password):
-    if username == "admin" and password == "password":
-        st.session_state['logged_in'] = True
-        st.success("Login berhasil!")
-    else:
-        st.error("Username atau password salah")
-
-# Fungsi untuk halaman login
-def login_page():
-    st.title("Login")
-    username = st.text_input("Username")
-    password = st.text_input("Password", type="password")
-    if st.button("Login"):
-        login(username, password)
 
 # Fungsi untuk halaman informasi stok
 def stock_information():
@@ -83,15 +68,10 @@ def trend_graph():
         st.write("Belum ada data yang disimpan.")
 
 # Inisialisasi session state untuk menyimpan data
-if 'data' not in st.session_state:
-    st.session_state['data'] = []
-if 'logged_in' not in st.session_state:
-    st.session_state['logged_in'] = False
+
 
 # Navigasi sidebar menggunakan button
 st.sidebar.title('Navigasi')
-if st.sidebar.button("Login"):
-    st.session_state['page'] = "Login"
 if st.sidebar.button("Informasi Stock"):
     st.session_state['page'] = "Informasi Stock"
 if st.sidebar.button("Input Data Logistik"):
@@ -102,12 +82,7 @@ if st.sidebar.button("Grafik Tren Logistik"):
     st.session_state['page'] = "Grafik Tren Logistik"
 
 # Menampilkan halaman berdasarkan pilihan navigasi
-if 'page' not in st.session_state:
-    st.session_state['page'] = "Login"
-
-if st.session_state['page'] == "Login":
-    login_page()
-elif st.session_state['page'] == "Informasi Stock":
+if st.session_state['page'] == "Informasi Stock":
     stock_information()
 elif st.session_state['page'] == "Input Data Logistik":
     logistic_data()
