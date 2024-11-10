@@ -8,12 +8,6 @@ if 'angka' not in st.session_state:
 if 'data' not in st.session_state:
     st.session_state.data = []
 
-# Buat kolom untuk hasil penambahan
-col1, col2 = st.columns([3, 1])
-
-with col1:
-    st.write('Hasil penambahan:', st.session_state.angka)
-
 # Input nilai yang akan ditambahkan
 nilai_tambah = st.number_input('Masukkan nilai yang akan ditambahkan:', min_value=0, step=1)
 
@@ -31,6 +25,9 @@ if st.button('Submit'):
         'Nomor Batch': nomor_batch,
         'Nilai Tambah': nilai_tambah
     })
+
+# Tampilkan hasil dengan ukuran teks yang lebih besar
+st.markdown(f"<h1 style='text-align: center; color: black;'>Hasil penambahan: {st.session_state.angka}</h1>", unsafe_allow_html=True)
 
 # Tampilkan tabel detail
 if st.session_state.data:
