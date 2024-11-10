@@ -26,8 +26,12 @@ if st.button('Submit'):
         'Nilai Tambah': nilai_tambah
     })
 
-# Tampilkan hasil dengan ukuran teks yang lebih besar
-st.markdown(f"<h1 style='text-align: center; color: black;'>Hasil penambahan: {st.session_state.angka}</h1>", unsafe_allow_html=True)
+# Tampilkan hasil dalam bentuk persegi
+st.markdown(f"""
+    <div style='display: flex; justify-content: center; align-items: center; height: 100px; width: 100px; background-color: lightgray; border: 2px solid black; border-radius: 10px;'>
+        <h2 style='margin: 0;'>{st.session_state.angka}</h2>
+    </div>
+    """, unsafe_allow_html=True)
 
 # Tampilkan tabel detail
 if st.session_state.data:
